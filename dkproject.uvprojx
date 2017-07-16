@@ -10,6 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F429ZITx</Device>
@@ -447,6 +448,16 @@
               <FileName>stm32f4xx_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\libraries\Template\stm32f4xx_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>general.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\App\general.c</FilePath>
+            </File>
+            <File>
+              <FileName>general.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\general.h</FilePath>
             </File>
           </Files>
         </Group>

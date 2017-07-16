@@ -4,7 +4,7 @@
 #include <stm32f4xx_spi.h>
 #include "spi.h"
 
-void SPIInit()
+void SPI1Init(void)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE); //Enable RCC GPIOA
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);// Enable RCC SPI1
@@ -62,7 +62,7 @@ int SPI1ReadWrite(uint8_t *rbuf, const uint8_t *tbuf, int cnt)
 	return i;
 }
 
-int SPI1ReadWrite16(uint8_t *rbuf, const uint8_t *tbuf, int cnt)
+int SPI1ReadWrite16(uint16_t *rbuf, const uint16_t *tbuf, int cnt)
 {
 	int i;
 	

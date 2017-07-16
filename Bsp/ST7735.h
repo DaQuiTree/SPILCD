@@ -8,7 +8,12 @@
 #ifndef _ST7735_H
 #define _ST7735_H
 
-void ST7735Init();
+#define ST7735_COLOR_BLK 0x0000
+#define ST7735_COLOR_BLU 0x001F
+#define ST7735_COLOR_GRE 0x07E0
+#define ST7735_COLOR_RED 0xF800
+
+void ST7735Init(void);
 void ST7735BackLight(uint8_t on);
 void FillScreen(uint16_t color);
 void ST7735SetAddrWindow(uint16_t x0 , uint16_t y0 ,uint16_t x1 , uint16_t y1 , uint8_t madctl);
@@ -16,3 +21,4 @@ void ST7735PushColor(uint16_t *color , int cnt);
 
 
 #endif
+

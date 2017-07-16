@@ -10,8 +10,8 @@
 #ifndef _SPI_H
 #define _SPI_H
 
-void SPIInit();
-void SPIReadWrite(uint8_t *rbuf, const uint8_t *tbuf, int cnt);
-void SPIReadWrite16(uint16_t *rbuf, const uint16_t *tbuf, int cnt);
+void SPI1Init(void);
+int SPI1ReadWrite(uint8_t *rbuf, const uint8_t *tbuf, int cnt);
+int SPI1ReadWrite16(uint16_t *rbuf, const uint16_t *tbuf, int cnt);
 	
 #endif
