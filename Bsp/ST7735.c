@@ -162,12 +162,16 @@ void ST7735Init(void)
 	GPIOInitStructure.GPIO_Pin = GPIO_PIN_SCE | GPIO_PIN_RST | GPIO_PIN_DC;
 	GPIOInitStructure.GPIO_Mode = GPIO_Mode_OUT;
 	GPIOInitStructure.GPIO_Speed = GPIO_Low_Speed;
+    GPIOInitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIOInitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Init(GPIOC,&GPIOInitStructure);
 	
 	GPIO_StructInit(&GPIOInitStructure);
 	GPIOInitStructure.GPIO_Pin = GPIO_PIN_BKL;
 	GPIOInitStructure.GPIO_Mode = GPIO_Mode_OUT;
-	GPIOInitStructure.GPIO_Speed = GPIO_Low_Speed;
+	GPIOInitStructure.GPIO_Speed = GPIO_Low_Speed;    
+    GPIOInitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIOInitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Init(GPIOA,&GPIOInitStructure);
 	
     SPI1Init();

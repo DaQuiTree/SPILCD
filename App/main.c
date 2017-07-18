@@ -7,7 +7,6 @@ int main()
 {
     ST7735Init();
     ST7735BackLight(1); // lightup BackLight LED
-    FillScreen(ST7735_COLOR_BLK);
-    
+    FillScreen(ST7735_COLOR_RED);
     while(1);
 }
