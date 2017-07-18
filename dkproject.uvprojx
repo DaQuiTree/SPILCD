@@ -415,24 +415,54 @@
           <GroupName>Bsp</GroupName>
           <Files>
             <File>
-              <FileName>ST7735.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Bsp\ST7735.h</FilePath>
-            </File>
-            <File>
-              <FileName>ST7735.c</FileName>
+              <FileName>delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Bsp\ST7735.c</FilePath>
+              <FilePath>.\Bsp\delay.c</FilePath>
             </File>
             <File>
-              <FileName>spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Bsp\spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>spi.h</FileName>
+              <FileName>delay.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Bsp\spi.h</FilePath>
+              <FilePath>.\Bsp\delay.h</FilePath>
+            </File>
+            <File>
+              <FileName>Font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Bsp\Font.h</FilePath>
+            </File>
+            <File>
+              <FileName>GUI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bsp\GUI.c</FilePath>
+            </File>
+            <File>
+              <FileName>GUI.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Bsp\GUI.h</FilePath>
+            </File>
+            <File>
+              <FileName>LCD_Config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Bsp\LCD_Config.h</FilePath>
+            </File>
+            <File>
+              <FileName>Lcd_Driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Bsp\Lcd_Driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>Lcd_Driver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Bsp\Lcd_Driver.h</FilePath>
+            </File>
+            <File>
+              <FileName>Picture.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Bsp\Picture.h</FilePath>
+            </File>
+            <File>
+              <FileName>platform_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Bsp\platform_config.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -448,16 +478,6 @@
               <FileName>stm32f4xx_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\libraries\Template\stm32f4xx_conf.h</FilePath>
-            </File>
-            <File>
-              <FileName>general.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\general.c</FilePath>
-            </File>
-            <File>
-              <FileName>general.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\App\general.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\Exectable.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Exectable.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Jul 18 09:22:49 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Jul 18 14:55:30 2017
 <BR><P>
-<H3>Maximum Stack Usage =        104 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        132 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; FillScreen &rArr; ST7735SetAddrWindow &rArr; ST7735_writeCmd &rArr; LcdWrite &rArr; SPI1ReadWrite
+__rt_entry_main &rArr; main &rArr; Redraw_Mainmenu &rArr; DisplayButtonUp &rArr; Gui_DrawLine &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
 <P>
 <H3>
 Functions with no stack information
@@ -26,6 +26,7 @@ Mutually Recursive functions
  <LI><a href="#[8]">SVC_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[8]">SVC_Handler</a><BR>
  <LI><a href="#[9]">DebugMon_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[9]">DebugMon_Handler</a><BR>
  <LI><a href="#[a]">PendSV_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[a]">PendSV_Handler</a><BR>
+ <LI><a href="#[b]">SysTick_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[b]">SysTick_Handler</a><BR>
  <LI><a href="#[1e]">ADC_IRQHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[1e]">ADC_IRQHandler</a><BR>
 </UL>
 <P>
@@ -107,7 +108,7 @@ Function Pointers
  <LI><a href="#[61]">SPI5_IRQHandler</a> from startup_stm32f429_439xx.o(.text) referenced from startup_stm32f429_439xx.o(RESET)
  <LI><a href="#[62]">SPI6_IRQHandler</a> from startup_stm32f429_439xx.o(.text) referenced from startup_stm32f429_439xx.o(RESET)
  <LI><a href="#[8]">SVC_Handler</a> from startup_stm32f429_439xx.o(.text) referenced from startup_stm32f429_439xx.o(RESET)
- <LI><a href="#[b]">SysTick_Handler</a> from general.o(i.SysTick_Handler) referenced from startup_stm32f429_439xx.o(RESET)
+ <LI><a href="#[b]">SysTick_Handler</a> from startup_stm32f429_439xx.o(.text) referenced from startup_stm32f429_439xx.o(RESET)
  <LI><a href="#[67]">SystemInit</a> from system_stm32f4xx.o(i.SystemInit) referenced from startup_stm32f429_439xx.o(.text)
  <LI><a href="#[e]">TAMP_STAMP_IRQHandler</a> from startup_stm32f429_439xx.o(.text) referenced from startup_stm32f429_439xx.o(RESET)
  <LI><a href="#[24]">TIM1_BRK_TIM9_IRQHandler</a> from startup_stm32f429_439xx.o(.text) referenced from startup_stm32f429_439xx.o(RESET)
@@ -153,9 +154,9 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
-<P><STRONG><a name="[98]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[95]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[99]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[96]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
 <P><STRONG><a name="[6d]"></a>__scatterload_copy</STRONG> (Thumb, 26 bytes, Stack size unknown bytes, __scatter_copy.o(!!handler_copy), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_copy
@@ -163,7 +164,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_copy
 </UL>
 
-<P><STRONG><a name="[9a]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
+<P><STRONG><a name="[97]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
 
 <P><STRONG><a name="[73]"></a>__rt_lib_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit.o(.ARM.Collect$$libinit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_li
@@ -173,70 +174,70 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fp_init
 </UL>
 
-<P><STRONG><a name="[9b]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
+<P><STRONG><a name="[98]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
 
-<P><STRONG><a name="[9c]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
+<P><STRONG><a name="[99]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
 
-<P><STRONG><a name="[9d]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
+<P><STRONG><a name="[9a]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
 
-<P><STRONG><a name="[9e]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
+<P><STRONG><a name="[9b]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
 
-<P><STRONG><a name="[9f]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
+<P><STRONG><a name="[9c]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
 
-<P><STRONG><a name="[a0]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
+<P><STRONG><a name="[9d]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
 
-<P><STRONG><a name="[a1]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
+<P><STRONG><a name="[9e]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
 
-<P><STRONG><a name="[a2]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
+<P><STRONG><a name="[9f]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
 
-<P><STRONG><a name="[a3]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
+<P><STRONG><a name="[a0]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
 
-<P><STRONG><a name="[a4]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
+<P><STRONG><a name="[a1]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
 
-<P><STRONG><a name="[a5]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
+<P><STRONG><a name="[a2]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
 
-<P><STRONG><a name="[a6]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
+<P><STRONG><a name="[a3]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
 
-<P><STRONG><a name="[a7]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
+<P><STRONG><a name="[a4]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
 
-<P><STRONG><a name="[a8]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
+<P><STRONG><a name="[a5]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
 
-<P><STRONG><a name="[a9]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
+<P><STRONG><a name="[a6]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
 
-<P><STRONG><a name="[aa]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
+<P><STRONG><a name="[a7]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
 
-<P><STRONG><a name="[ab]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
+<P><STRONG><a name="[a8]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
 
-<P><STRONG><a name="[ac]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
+<P><STRONG><a name="[a9]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
 
-<P><STRONG><a name="[ad]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
+<P><STRONG><a name="[aa]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
 
-<P><STRONG><a name="[ae]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
+<P><STRONG><a name="[ab]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
 
 <P><STRONG><a name="[78]"></a>__rt_lib_shutdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown.o(.ARM.Collect$$libshutdown$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_ls
 </UL>
 
-<P><STRONG><a name="[af]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
+<P><STRONG><a name="[ac]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
 
-<P><STRONG><a name="[b0]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
+<P><STRONG><a name="[ad]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
 
-<P><STRONG><a name="[b1]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
+<P><STRONG><a name="[ae]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
 
-<P><STRONG><a name="[b2]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
+<P><STRONG><a name="[af]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
 
-<P><STRONG><a name="[b3]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
+<P><STRONG><a name="[b0]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
 
-<P><STRONG><a name="[b4]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
+<P><STRONG><a name="[b1]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
 
-<P><STRONG><a name="[b5]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
+<P><STRONG><a name="[b2]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
 
 <P><STRONG><a name="[6b]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 </UL>
 
-<P><STRONG><a name="[b6]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
+<P><STRONG><a name="[b3]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
 
 <P><STRONG><a name="[70]"></a>__rt_entry_sh</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry4.o(.ARM.Collect$$rtentry$$00000004))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -249,17 +250,17 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init
 </UL>
 
-<P><STRONG><a name="[b7]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
+<P><STRONG><a name="[b4]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[74]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; FillScreen &rArr; ST7735SetAddrWindow &rArr; ST7735_writeCmd &rArr; LcdWrite &rArr; SPI1ReadWrite
+<BR><BR>[Stack]<UL><LI>Max Depth = 132 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; Redraw_Mainmenu &rArr; DisplayButtonUp &rArr; Gui_DrawLine &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
 </UL>
 <BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 </UL>
 
-<P><STRONG><a name="[b8]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
+<P><STRONG><a name="[b5]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
 
 <P><STRONG><a name="[7d]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -269,7 +270,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_shutdown
 </UL>
 
-<P><STRONG><a name="[b9]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
+<P><STRONG><a name="[b6]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
 
 <P><STRONG><a name="[79]"></a>__rt_exit_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
@@ -331,6 +332,13 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PendSV_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PendSV_Handler
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429_439xx.o(RESET)
+</UL>
+<P><STRONG><a name="[b]"></a>SysTick_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, startup_stm32f429_439xx.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429_439xx.o(RESET)
 </UL>
@@ -615,11 +623,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[ba]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[b7]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[bb]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[b8]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[bc]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[b9]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
 <P><STRONG><a name="[71]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -640,250 +648,268 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[bd]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[ba]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[7b]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[be]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[bb]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[7a]"></a>_sys_exit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, sys_exit.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
 </UL>
 
-<P><STRONG><a name="[bf]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[bc]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[c0]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[bd]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[c1]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
+<P><STRONG><a name="[be]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[95]"></a>Delay</STRONG> (Thumb, 120 bytes, Stack size 20 bytes, general.o(i.Delay))
-<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Delay
+<P><STRONG><a name="[7e]"></a>Color_Test</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, main.o(i.Color_Test))
+<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = Color_Test &rArr; Gui_DrawFont_GBK16 &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735Init
-</UL>
-
-<P><STRONG><a name="[7e]"></a>FillScreen</STRONG> (Thumb, 52 bytes, Stack size 24 bytes, st7735.o(i.FillScreen))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = FillScreen &rArr; ST7735SetAddrWindow &rArr; ST7735_writeCmd &rArr; LcdWrite &rArr; SPI1ReadWrite
-</UL>
-<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735SetAddrWindow
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735PushColor
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Clear
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawFont_GBK16
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8d]"></a>GPIO_Init</STRONG> (Thumb, 144 bytes, Stack size 20 bytes, stm32f4xx_gpio.o(i.GPIO_Init))
+<P><STRONG><a name="[82]"></a>DisplayButtonUp</STRONG> (Thumb, 130 bytes, Stack size 24 bytes, gui.o(i.DisplayButtonUp))
+<BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = DisplayButtonUp &rArr; Gui_DrawLine &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
+</UL>
+<BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawLine
+</UL>
+<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Redraw_Mainmenu
+</UL>
+
+<P><STRONG><a name="[84]"></a>Font_Test</STRONG> (Thumb, 150 bytes, Stack size 8 bytes, main.o(i.Font_Test))
+<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = Font_Test &rArr; Gui_DrawFont_GBK16 &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Clear
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawFont_GBK16
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+</UL>
+<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[8c]"></a>GPIO_Init</STRONG> (Thumb, 144 bytes, Stack size 20 bytes, stm32f4xx_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1Init
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735Init
+<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[8b]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 70 bytes, Stack size 20 bytes, stm32f4xx_gpio.o(i.GPIO_PinAFConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_PinAFConfig
+<P><STRONG><a name="[80]"></a>Gui_DrawFont_GBK16</STRONG> (Thumb, 394 bytes, Stack size 40 bytes, gui.o(i.Gui_DrawFont_GBK16))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Gui_DrawFont_GBK16 &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1Init
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawPoint
 </UL>
-
-<P><STRONG><a name="[83]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite16
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite
-</UL>
-
-<P><STRONG><a name="[85]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_SetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite16
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite
+<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_pic
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Redraw_Mainmenu
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Num_Test
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Font_Test
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Color_Test
 </UL>
 
-<P><STRONG><a name="[8c]"></a>GPIO_StructInit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_StructInit))
-<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1Init
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735Init
+<P><STRONG><a name="[86]"></a>Gui_DrawFont_Num32</STRONG> (Thumb, 124 bytes, Stack size 40 bytes, gui.o(i.Gui_DrawFont_Num32))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Gui_DrawFont_Num32 &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
+</UL>
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawPoint
+</UL>
+<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Redraw_Mainmenu
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Num_Test
 </UL>
 
-<P><STRONG><a name="[82]"></a>GPIO_WriteBit</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_WriteBit))
-<BR><BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735Init
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735BackLight
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite16
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite
+<P><STRONG><a name="[83]"></a>Gui_DrawLine</STRONG> (Thumb, 186 bytes, Stack size 64 bytes, gui.o(i.Gui_DrawLine))
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = Gui_DrawLine &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
+</UL>
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_SetXY
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawPoint
+</UL>
+<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayButtonUp
 </UL>
 
-<P><STRONG><a name="[89]"></a>RCC_AHB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1Init
+<P><STRONG><a name="[85]"></a>Gui_DrawPoint</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, lcd_driver.o(i.Gui_DrawPoint))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Gui_DrawPoint &rArr; Lcd_SetRegion
+</UL>
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_WriteData
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_SetRegion
+</UL>
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawLine
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawFont_Num32
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawFont_GBK16
 </UL>
 
-<P><STRONG><a name="[8a]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1Init
+<P><STRONG><a name="[8a]"></a>LCD_GPIO_Init</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, lcd_driver.o(i.LCD_GPIO_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = LCD_GPIO_Init &rArr; GPIO_Init
+</UL>
+<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Init
 </UL>
 
-<P><STRONG><a name="[88]"></a>SPI1Init</STRONG> (Thumb, 184 bytes, Stack size 32 bytes, spi.o(i.SPI1Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = SPI1Init &rArr; GPIO_PinAFConfig
+<P><STRONG><a name="[7f]"></a>Lcd_Clear</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, lcd_driver.o(i.Lcd_Clear))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Lcd_Clear &rArr; Lcd_SetRegion
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Init
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_StructInit
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_WriteIndex
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_WriteData
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_SetRegion
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735Init
-</UL>
-
-<P><STRONG><a name="[84]"></a>SPI1ReadWrite</STRONG> (Thumb, 90 bytes, Stack size 24 bytes, spi.o(i.SPI1ReadWrite))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SPI1ReadWrite
-</UL>
-<BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_SendData
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetFlagStatus
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_DataSizeConfig
-</UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite
+<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_pic
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Redraw_Mainmenu
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Num_Test
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Font_Test
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Color_Test
 </UL>
 
-<P><STRONG><a name="[87]"></a>SPI1ReadWrite16</STRONG> (Thumb, 92 bytes, Stack size 24 bytes, spi.o(i.SPI1ReadWrite16))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SPI1ReadWrite16
+<P><STRONG><a name="[8e]"></a>Lcd_Init</STRONG> (Thumb, 548 bytes, Stack size 8 bytes, lcd_driver.o(i.Lcd_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Lcd_Init &rArr; LCD_GPIO_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_SendData
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetFlagStatus
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_DataSizeConfig
-</UL>
-<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite16
-</UL>
-
-<P><STRONG><a name="[8f]"></a>SPI_DataSizeConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_DataSizeConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1ReadWrite16
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1ReadWrite
-</UL>
-
-<P><STRONG><a name="[91]"></a>SPI_I2S_GetFlagStatus</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_I2S_GetFlagStatus))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1ReadWrite16
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1ReadWrite
-</UL>
-
-<P><STRONG><a name="[92]"></a>SPI_I2S_ReceiveData</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_I2S_ReceiveData))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1ReadWrite16
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1ReadWrite
-</UL>
-
-<P><STRONG><a name="[90]"></a>SPI_I2S_SendData</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_spi.o(i.SPI_I2S_SendData))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1ReadWrite16
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1ReadWrite
-</UL>
-
-<P><STRONG><a name="[8e]"></a>SPI_Init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, stm32f4xx_spi.o(i.SPI_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SPI_Init
-</UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1Init
-</UL>
-
-<P><STRONG><a name="[93]"></a>ST7735BackLight</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, st7735.o(i.ST7735BackLight))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ST7735BackLight
-</UL>
-<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
+<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_WriteIndex
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_WriteData
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Reset
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[94]"></a>ST7735Init</STRONG> (Thumb, 192 bytes, Stack size 16 bytes, st7735.o(i.ST7735Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = ST7735Init &rArr; SPI1Init &rArr; GPIO_PinAFConfig
+<P><STRONG><a name="[8f]"></a>Lcd_Reset</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, lcd_driver.o(i.Lcd_Reset))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Lcd_Reset
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1Init
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_StructInit
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite
+<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Init
+</UL>
+
+<P><STRONG><a name="[88]"></a>Lcd_SetRegion</STRONG> (Thumb, 78 bytes, Stack size 20 bytes, lcd_driver.o(i.Lcd_SetRegion))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Lcd_SetRegion
+</UL>
+<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_WriteIndex
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_WriteData
+</UL>
+<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Clear
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_SetXY
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawPoint
+</UL>
+
+<P><STRONG><a name="[87]"></a>Lcd_SetXY</STRONG> (Thumb, 20 bytes, Stack size 12 bytes, lcd_driver.o(i.Lcd_SetXY))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Lcd_SetXY &rArr; Lcd_SetRegion
+</UL>
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_SetRegion
+</UL>
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawLine
+</UL>
+
+<P><STRONG><a name="[89]"></a>Lcd_WriteData</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, lcd_driver.o(i.Lcd_WriteData))
+<BR><BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_pic
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_SetRegion
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Init
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Clear
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawPoint
+</UL>
+
+<P><STRONG><a name="[8d]"></a>Lcd_WriteIndex</STRONG> (Thumb, 80 bytes, Stack size 0 bytes, lcd_driver.o(i.Lcd_WriteIndex))
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_SetRegion
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Init
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Clear
+</UL>
+
+<P><STRONG><a name="[90]"></a>Num_Test</STRONG> (Thumb, 126 bytes, Stack size 24 bytes, main.o(i.Num_Test))
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = Num_Test &rArr; Gui_DrawFont_Num32 &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Clear
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawFont_Num32
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawFont_GBK16
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[80]"></a>ST7735PushColor</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, st7735.o(i.ST7735PushColor))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = ST7735PushColor &rArr; LcdWrite16 &rArr; SPI1ReadWrite16
-</UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite16
-</UL>
-<BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FillScreen
+<P><STRONG><a name="[8b]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB2PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[7f]"></a>ST7735SetAddrWindow</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, st7735.o(i.ST7735SetAddrWindow))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = ST7735SetAddrWindow &rArr; ST7735_writeCmd &rArr; LcdWrite &rArr; SPI1ReadWrite
+<P><STRONG><a name="[91]"></a>Redraw_Mainmenu</STRONG> (Thumb, 354 bytes, Stack size 8 bytes, main.o(i.Redraw_Mainmenu))
+<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = Redraw_Mainmenu &rArr; DisplayButtonUp &rArr; Gui_DrawLine &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
 </UL>
-<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_writeCmd
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite16
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Clear
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawFont_Num32
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawFont_GBK16
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayButtonUp
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FillScreen
+<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b]"></a>SysTick_Handler</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, general.o(i.SysTick_Handler))
-<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429_439xx.o(RESET)
-</UL>
 <P><STRONG><a name="[67]"></a>SystemInit</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, system_stm32f4xx.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SystemInit &rArr; SetSysClock
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+</UL>
+<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429_439xx.o(.text)
 </UL>
-<P><STRONG><a name="[75]"></a>main</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = main &rArr; FillScreen &rArr; ST7735SetAddrWindow &rArr; ST7735_writeCmd &rArr; LcdWrite &rArr; SPI1ReadWrite
+<P><STRONG><a name="[93]"></a>delay_init</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, delay.o(i.delay_init))
+<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735Init
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735BackLight
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FillScreen
+
+<P><STRONG><a name="[81]"></a>delay_ms</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, delay.o(i.delay_ms))
+<BR><BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_pic
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Redraw_Mainmenu
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Num_Test
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Font_Test
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Color_Test
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Reset
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Init
+</UL>
+
+<P><STRONG><a name="[75]"></a>main</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = main &rArr; Redraw_Mainmenu &rArr; DisplayButtonUp &rArr; Gui_DrawLine &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
+</UL>
+<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_pic
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Redraw_Mainmenu
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Num_Test
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Font_Test
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Color_Test
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Init
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
+</UL>
+
+<P><STRONG><a name="[94]"></a>show_pic</STRONG> (Thumb, 104 bytes, Stack size 32 bytes, main.o(i.show_pic))
+<BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = show_pic &rArr; Gui_DrawFont_GBK16 &rArr; Gui_DrawPoint &rArr; Lcd_SetRegion
+</UL>
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_WriteData
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lcd_Clear
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Gui_DrawFont_GBK16
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+</UL>
+<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[6f]"></a>_fp_init</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fpinit.o(x$fpl$fpinit))
 <BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_fp_1
 </UL>
 
-<P><STRONG><a name="[c2]"></a>__fplib_config_fpu_vfp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
+<P><STRONG><a name="[bf]"></a>__fplib_config_fpu_vfp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
 
-<P><STRONG><a name="[c3]"></a>__fplib_config_pureend_doubles</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
+<P><STRONG><a name="[c0]"></a>__fplib_config_pureend_doubles</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
 <P>
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[97]"></a>SetSysClock</STRONG> (Thumb, 272 bytes, Stack size 12 bytes, system_stm32f4xx.o(i.SetSysClock))
+<P><STRONG><a name="[92]"></a>SetSysClock</STRONG> (Thumb, 272 bytes, Stack size 12 bytes, system_stm32f4xx.o(i.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
-</UL>
-
-<P><STRONG><a name="[81]"></a>LcdWrite</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, st7735.o(i.LcdWrite))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LcdWrite &rArr; SPI1ReadWrite
-</UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1ReadWrite
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-</UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735SetAddrWindow
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735Init
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_writeCmd
-</UL>
-
-<P><STRONG><a name="[86]"></a>LcdWrite16</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, st7735.o(i.LcdWrite16))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LcdWrite16 &rArr; SPI1ReadWrite16
-</UL>
-<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1ReadWrite16
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_WriteBit
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-</UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735SetAddrWindow
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735PushColor
-</UL>
-
-<P><STRONG><a name="[96]"></a>ST7735_writeCmd</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, st7735.o(i.ST7735_writeCmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ST7735_writeCmd &rArr; LcdWrite &rArr; SPI1ReadWrite
-</UL>
-<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LcdWrite
-</UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735SetAddrWindow
 </UL>
 <P>
 <H3>

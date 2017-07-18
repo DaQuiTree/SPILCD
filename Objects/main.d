@@ -36,5 +36,7 @@
 .\objects\main.o: ..\..\libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\main.o: ..\..\libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\objects\main.o: ..\..\libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
-.\objects\main.o: App\..\Bsp\st7735.h
-.\objects\main.o: App\general.h
+.\objects\main.o: App\..\Bsp\Lcd_Driver.h
+.\objects\main.o: App\..\Bsp\GUI.h
+.\objects\main.o: App\..\Bsp\delay.h
+.\objects\main.o: App\..\Bsp\Picture.h

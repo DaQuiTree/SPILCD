@@ -1,10 +1,10 @@
 --cpu=Cortex-M4.fp
 ".\objects\startup_stm32f429_439xx.o"
 ".\objects\system_stm32f4xx.o"
-".\objects\st7735.o"
-".\objects\spi.o"
+".\objects\delay.o"
+".\objects\gui.o"
+".\objects\lcd_driver.o"
 ".\objects\main.o"
-".\objects\general.o"
 ".\objects\stm32f4xx_gpio.o"
 ".\objects\stm32f4xx_rcc.o"
 ".\objects\stm32f4xx_spi.o"
